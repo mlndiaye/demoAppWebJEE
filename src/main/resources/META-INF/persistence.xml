@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="demoAppWebJeePu" transaction-type="JTA">
+        <!-- Source de données JTA (définie sur le serveur d'application) -->
+        <jta-data-source>jdbc/demoAppWebJee</jta-data-source>
+
+        <!-- Activer la détection automatique des entités -->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <!-- Configuration des propriétés de persistence -->
+        <properties>
+            <!-- Action sur le schéma de base de données -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+
+            <!-- Journalisation des requêtes SQL -->
+            <property name="jakarta.persistence.jdbc.show-sql" value="true"/>
+            <property name="jakarta.persistence.jdbc.log-statements" value="true"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
